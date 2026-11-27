@@ -1,0 +1,366 @@
+/* China in Numbers — design.
+   A quiet official-statistics look: deep navy masthead, China-red
+   accents, warm paper background, serif numerals. System fonts
+   only, so the page renders identically with no network. */
+:root {
+  --paper: #f6f2ea;
+  --card: #fffdf8;
+  --ink: #14263f;
+  --navy: #14365e;
+  --navy-deep: #0d2440;
+  --red: #c8102e;
+  --gold: #b98a2f;
+  --teal: #177a6c;
+  --slate: #5b6b7f;
+  --line: #ddd5c3;
+  --soft: #efe9db;
+  --radius: 10px;
+  --shadow: 0 1px 3px rgba(20, 38, 63, 0.10), 0 4px 14px rgba(20, 38, 63, 0.06);
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.55;
+}
+
+a { color: var(--navy); }
+
+a:focus-visible, button:focus-visible {
+  outline: 3px solid var(--red);
+  outline-offset: 2px;
+}
+
+.noscript {
+  max-width: 1080px;
+  margin: 24px auto;
+  padding: 16px 20px;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+
+/* Masthead */
+.masthead {
+  background: var(--navy-deep);
+  color: #fff;
+  padding: 22px 0 0;
+}
+.masthead-inner {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 0 20px 18px;
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+.seal {
+  flex: 0 0 auto;
+  width: 56px;
+  height: 56px;
+  background: var(--red);
+  color: #fff;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 1;
+}
+.masthead h1 {
+  margin: 0;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 30px;
+  line-height: 1.15;
+  letter-spacing: 0.2px;
+}
+.masthead p {
+  margin: 4px 0 0;
+  color: #c9d4e2;
+  font-size: 14px;
+}
+.masthead .year-badge {
+  margin-left: auto;
+  text-align: right;
+  font-size: 13px;
+  color: #c9d4e2;
+  white-space: nowrap;
+}
+.masthead .year-badge strong {
+  display: block;
+  color: #fff;
+  font-family: Georgia, serif;
+  font-size: 26px;
+  line-height: 1.1;
+}
+
+/* Tabs */
+.tabs {
+  background: var(--navy);
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  box-shadow: 0 2px 8px rgba(13, 36, 64, 0.25);
+}
+.tabs-inner {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  gap: 4px;
+  overflow-x: auto;
+}
+.tabs a {
+  color: #c9d4e2;
+  text-decoration: none;
+  padding: 12px 16px;
+  font-size: 15px;
+  font-weight: 600;
+  border-bottom: 3px solid transparent;
+  white-space: nowrap;
+}
+.tabs a:hover { color: #fff; }
+.tabs a.active {
+  color: #fff;
+  border-bottom-color: var(--red);
+}
+
+/* Layout */
+#view {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 28px 20px 40px;
+}
+.page-head { margin-bottom: 22px; }
+.page-head h2 {
+  margin: 0 0 6px;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 30px;
+  line-height: 1.2;
+  color: var(--navy-deep);
+}
+.page-head .lede {
+  margin: 0;
+  font-size: 17px;
+  color: var(--slate);
+  max-width: 720px;
+}
+.page-head .updated {
+  margin: 10px 0 0;
+  font-size: 13px;
+  color: var(--slate);
+}
+.page-head .updated strong { color: var(--ink); }
+
+h3 {
+  margin: 0 0 10px;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 20px;
+  color: var(--navy-deep);
+}
+
+/* KPI cards */
+.kpis {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  margin: 0 0 22px;
+}
+.kpi {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 16px 18px;
+}
+.kpi .value {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 30px;
+  font-weight: 700;
+  color: var(--navy-deep);
+  line-height: 1.1;
+}
+.kpi .value .unit { font-size: 18px; color: var(--slate); }
+.kpi .label { margin-top: 4px; font-weight: 600; font-size: 14px; }
+.kpi .sub { font-size: 13px; color: var(--slate); }
+.kpi.accent { border-top: 4px solid var(--red); }
+
+/* Cards and grids */
+.grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+  margin-bottom: 18px;
+}
+.card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 20px 22px;
+  margin-bottom: 18px;
+}
+.card.wide { margin-bottom: 18px; }
+.card p { margin: 0 0 10px; }
+.card p:last-child { margin-bottom: 0; }
+.chart-wrap { margin: 6px 0 4px; }
+.chart-wrap svg { width: 100%; height: auto; display: block; }
+.source {
+  font-size: 12.5px;
+  color: var(--slate);
+  margin: 8px 0 0;
+}
+.note {
+  background: var(--soft);
+  border-left: 4px solid var(--gold);
+  border-radius: 0 8px 8px 0;
+  padding: 12px 16px;
+  font-size: 14.5px;
+  margin: 0 0 18px;
+}
+.note strong { color: var(--navy-deep); }
+
+/* Donut layout */
+.donut-row {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.donut-row .donut-box { flex: 0 0 auto; }
+.legend {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  flex: 1 1 220px;
+}
+.legend li { padding: 5px 0; font-size: 14.5px; }
+.swatch {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-radius: 3px;
+  margin-right: 8px;
+  vertical-align: -1px;
+}
+
+/* Tables */
+table.data {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14.5px;
+}
+table.data th,
+table.data td {
+  padding: 9px 10px;
+  text-align: right;
+  border-bottom: 1px solid var(--line);
+  white-space: nowrap;
+}
+table.data th:first-child,
+table.data td:first-child { text-align: left; }
+table.data thead th {
+  background: var(--soft);
+  color: var(--navy-deep);
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+}
+table.data th.sortable { cursor: pointer; }
+table.data th.sortable:hover { color: var(--red); }
+table.data tbody tr:hover { background: #fbf8f1; }
+table.data td.num { font-variant-numeric: tabular-nums; }
+.table-scroll { overflow-x: auto; }
+
+/* Controls: toggles and filter chips */
+.controls { display: flex; gap: 8px; flex-wrap: wrap; margin: 0 0 14px; }
+.toggle, .chip {
+  appearance: none;
+  border: 1px solid var(--line);
+  background: #fff;
+  color: var(--ink);
+  border-radius: 999px;
+  padding: 7px 14px;
+  font-size: 13.5px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: inherit;
+}
+.toggle:hover, .chip:hover { border-color: var(--navy); }
+.toggle.on, .chip.on {
+  background: var(--navy);
+  border-color: var(--navy);
+  color: #fff;
+}
+.chip.on.red { background: var(--red); border-color: var(--red); }
+
+/* Link cards */
+.link-cards {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+  margin-bottom: 18px;
+}
+.link-card {
+  display: block;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 16px 18px;
+  text-decoration: none;
+  color: var(--ink);
+}
+.link-card:hover { border-color: var(--red); }
+.link-card strong {
+  display: block;
+  font-family: Georgia, serif;
+  font-size: 18px;
+  color: var(--navy-deep);
+  margin-bottom: 2px;
+}
+.link-card span { font-size: 14px; color: var(--slate); }
+.link-card .go { color: var(--red); font-weight: 700; }
+
+/* Key facts list */
+.facts { margin: 0; padding-left: 20px; }
+.facts li { margin-bottom: 8px; }
+.facts li::marker { color: var(--red); }
+
+/* Footer */
+.site-footer {
+  border-top: 1px solid var(--line);
+  background: #efe9db;
+  padding: 24px 0 34px;
+}
+.site-footer-inner {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 0 20px;
+  font-size: 13.5px;
+  color: var(--slate);
+}
+.site-footer strong { color: var(--ink); }
+
+/* Phone */
+@media (max-width: 720px) {
+  .masthead h1 { font-size: 23px; }
+  .masthead .year-badge { display: none; }
+  .seal { width: 44px; height: 44px; font-size: 25px; }
+  .kpis { grid-template-columns: repeat(2, 1fr); }
+  .grid-2 { grid-template-columns: 1fr; }
+  .link-cards { grid-template-columns: 1fr; }
+  .page-head h2 { font-size: 24px; }
+  .kpi .value { font-size: 24px; }
+  #view { padding: 20px 14px 30px; }
+  .card { padding: 16px; }
+}
