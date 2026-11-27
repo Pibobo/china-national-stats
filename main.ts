@@ -1,5 +1,6 @@
 import { cpSync, mkdirSync, writeFileSync } from "node:fs";
-import { join } from "node:path";
+import { dirname, join } from "node:path";
+import { fileURLToPath } from "node:url";
 import { buildDossier } from "./vendor/makefun-frontend.ts";
 
 /* China in Numbers — the hand-in program.
@@ -9,7 +10,7 @@ import { buildDossier } from "./vendor/makefun-frontend.ts";
    same bytes, because the copy and the dossier are deterministic. */
 
 const outDir = process.env.MAKEFUN_OUTPUT_DIR || "/output";
-const repoDir = process.cwd();
+const repoDir = dirname(fileURLToPath(import.meta.url));
 
 mkdirSync(outDir, { recursive: true });
 cpSync(join(repoDir, "app"), join(outDir, "app"), { recursive: true });
